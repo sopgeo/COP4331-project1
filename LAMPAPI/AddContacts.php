@@ -1,10 +1,10 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$name = $inData["Name"];
-	$phone = $inData["Phone"];
-	$email = $inData["Email"];
+	$name = $inData["name"];
 	$userId = $inData["userId"];
+	$phone = $inData["phone"];
+	$email = $inData["email"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -13,8 +13,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
-		$stmt->bind_param("sssi", $name, $phone, $email, $userID);
+		$stmt = $conn->prepare("INSERT into Contacts (UserId,Name,Phone,Email) VALUES(?,?,?,?)");
+		$stmt->bind_param("ssss", $userId, $name, $phone, $email);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
