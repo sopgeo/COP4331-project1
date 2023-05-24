@@ -12,9 +12,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Colors where (FirstName like ? OR LastName like ?) and UserID=?");
+		$stmt = $conn->prepare("select * from Contacts where (Name like ? OR Phone like ? OR Email like ?) and UserID=?");
 		$colorName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $colorName, $inData["userId"]);
+		$stmt->bind_param("ssss", $colorName, $colorName, $colorName, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -26,9 +26,8 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			//$searchResults .= '"' . $row["FirstName"] . '"';
-
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"] . '"}, {"LastName" : "' . $row["LastName"] . '"}, {"Phone" : "' . $row["Phone"] . '"}, {"Email" : "' . $row["Email"] . '"}';
+			//$searchResults .= '"' . $row["Name"] . '"';
+			$searchResults .= '{"Name": "'. $row["Name"] . '", "Phone": "'. $row["Phone"] . '", "Email": "'. $row["Email"] . '"}';
 		}
 		
 		if( $searchCount == 0 )
