@@ -1,15 +1,11 @@
 <?php
 	$inData = getRequestInfo();
 	
-	//$color = $inData["color"];
-	//$contact = $inData["contact"];
 
 	$name = $inData["name"];
 	$userId = $inData["userId"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
-
-	//$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -18,15 +14,12 @@
 	} 
 	else
 	{
-		//$stmt = $conn->prepare("INSERT into Colors (UserId,Name) VALUES(?,?)");
-		//$stmt->bind_param("ss", $userId, $color);
 
+		$sql = "DELETE FROM Contacts WHERE Name = $name";
+		if (mysqli_query($conn, $sql)) {
+    			echo "Contact deleted!";
+		}
 
-		// Testing this line of code.
-		$sql = "DELETE FROM Contacts WHERE Name=$name";
-
-		$stmt->execute();
-		$stmt->close();
 		$conn->close();
 		returnWithError("");
 	}
