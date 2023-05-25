@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select * from Contacts where (Name like ? OR Phone like ? OR Email like ?) and UserID=?");
+		$stmt = $conn->prepare("select * from Contacts where (Name like ? OR Phone like ? OR Email like ?) and UserID=?"); //can search based of Name, Phone Number, OR Email 
 		$colorName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ssss", $colorName, $colorName, $colorName, $inData["userId"]);
 		$stmt->execute();
