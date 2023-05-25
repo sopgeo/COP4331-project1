@@ -14,12 +14,16 @@
 	} 
 	else
 	{
-
+		/*
 		$sql = "DELETE FROM Contacts WHERE Name = $name";
 		if (mysqli_query($conn, $sql)) {
     			echo "Contact deleted!";
 		}
-
+		*/
+		$stmt = $conn->prepare("DELETE FROM Contacts WHERE Name=? AND Phone=? AND Email=? AND UserID=?"); // prepare command to insert into contacts table
+		$stmt->bind_param("ssss", $name, $phone, $email, $userId);
+		$stmt->execute();
+		$stmt->close();
 		$conn->close();
 		returnWithError("");
 	}
