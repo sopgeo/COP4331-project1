@@ -1,6 +1,7 @@
 <?php
 	$inData = getRequestInfo();
 	
+	//Names for input
 	$name = $inData["name"];
 	$userId = $inData["userId"];
 	$phone = $inData["phone"];
@@ -13,7 +14,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (UserId,Name,Phone,Email) VALUES(?,?,?,?)");
+		$stmt = $conn->prepare("INSERT into Contacts (UserId,Name,Phone,Email) VALUES(?,?,?,?)"); // prepare command to insert into contacts table
 		$stmt->bind_param("ssss", $userId, $name, $phone, $email);
 		$stmt->execute();
 		$stmt->close();
