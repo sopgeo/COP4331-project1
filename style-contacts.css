@@ -1,0 +1,117 @@
+body {
+   margin: 0;
+}
+
+section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   width: 100%;
+
+   /*provide png image for background*/
+   background: url('son.png') no-repeat;
+   background-position-x: center;
+   background-size: cover;
+   /* animation: animateBg 5s linear infinite; */
+   background-attachment: fixed;
+}
+
+.contacts-list{
+   position: absolute;
+   left: 50px;
+   width: 400px;
+   height: 745px;
+   background: transparent;
+   border: 2px solid rgba(255,255,255,0.5);
+   border-radius: 20px;
+   backdrop-filter: blur(15px);
+   display: flex;
+   justify-content: center;
+   align-items: left;
+}
+
+.individual-contact{
+   position: absolute;
+   left: 475px;
+   width: 910px;
+   height: 745px;
+   background: transparent;
+   border: 2px solid rgba(255,255,255,0.5);
+   border-radius: 20px;
+   backdrop-filter: blur(15px);
+   display: flex;
+   justify-content: center;
+   align-items: left;
+}
+
+.search-container input[type=text]{
+   position: relative;
+   
+   width: 300px;
+   height: 27px;
+   left: 10px;
+   margin: 12px;
+
+   background: rgba(217, 217, 217, 0.3);
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 20px;
+   /* float:left; */
+   /* margin:7px; */
+
+   font-size: 15px;
+   color: #FFFFFF;
+
+   font-family: 'Poppins';
+
+   padding: 5px 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   transition: 0.8s;
+}
+
+.search-container:hover>.search-input {
+   width: 400px;
+}
+
+.search-container .search-input {
+   background: transparent;
+   border: none;
+   outline: none;
+   width: 0px;
+   font-family: 'Montserrat';
+   font-weight: 500;
+   font-size: 16px;
+   transition: 0.8s;
+}
+
+/*login button*/
+button{
+   width: 100%;
+   height: 40px;
+   border-radius: 40px;
+   background: white;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   font-size: 1em;
+   font-weight: 600;
+}
+
+/* .search-container:hover {
+   width: 300px;
+   height: 27px;
+ } */
+
+/* .search button{
+   background-color: #0074D9;
+   color: #f2f2f2;
+   float: right;
+   padding: 5px 10px;
+   margin-right: 16px;
+   font-size: 12px;
+   border: none;
+   cursor: pointer;
+} */
