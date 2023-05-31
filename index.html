@@ -1,22 +1,71 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset = "utf-8">
 
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
+        <script type="text/javascript" src="js/md5.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>
+        
+        <title>COP 4331 LAMP Stack Demo</title>
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    </head>
 
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
+    <body>
 
-</body>
+        <section> 
+        <div class = "container">
+            <pre class = "text1">COP 4331 LAMP Stack Demo</pre>
+            <pre class = "bottom">Another Day in Paradise</pre>
+        </div>
+        
+
+        <div class = "formbox">
+            <div class = "formvalue">
+                <form action = "">
+                    <h2>Please Log In</h2>
+
+                    <!--form for user name -->
+                    <div class = "inputbox">
+                        <i class = "fas fa-caret-square-right"></i>
+                        <input type="text" id="loginName" name="username" placeholder="Username"> 
+                    </div>
+
+                    <!--form for password -->
+                    <div class = "inputbox">
+                        <!-- for lock icon-->
+                        <i class = "fa fa-lock"></i>
+                        <input type = "password" id = "loginPassword" name = "password" placeholder = "Password">
+                    </div>
+
+                    
+                    <!--form for log in button-->
+                    <button type="button" id="loginButton" onclick="doLogin();">Log In</button> 
+                    <pre id="loginResult"></pre>
+                    
+
+                    
+                </form>
+            </div>
+        </div>
+        </section>
+
+         <!-- section for animated shooting stars -->
+         <section>
+            <div class = "shootingStars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </section>
+
+    </body>
+
 </html>
