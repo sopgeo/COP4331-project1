@@ -1,35 +1,36 @@
-/*font link*/
+/*import font*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 *{
     margin: 0;
     padding: 0;
     font-family: 'poppins',sans-serif;
 }
+
 body{
     overflow: hidden;
-} 
+}
 
 section{
-
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     width: 100%;
 
-    /*provide png image for background*/
-    background: url('son.png')no-repeat;
+    /*provide jpg image for background*/
+    background: url('son2.jpg')no-repeat;
     background-position-x: center;
     background-size: cover;
     animation: animateBg 5s linear infinite;
-
 }
 
-/* website title */
+/* website title */ 
 .title{
     position: absolute;
-    top: 18%;
+    text-align:center;
+    top: 16%;
     font-size: 1.3em;
+    color: white;
     
 }
 
@@ -39,7 +40,7 @@ section{
     width: 400px;
     height: 420px;
     background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 3px solid rgba(255,255,255,0.5);
     border-radius: 20px;
     backdrop-filter: blur(15px);
     display: flex;
@@ -51,7 +52,7 @@ section{
 /* "please log in" */
 h2{
     font-size:2em;
-    color: black;
+    color: white;
     text-align: center;
 }
 
@@ -65,20 +66,13 @@ h2{
 
 .inputbox label{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 5px;
     color: white;
     font-size: 1em;
     pointer-events: none;
     transform: translateY(-50%);
     transition: .5s;
-    
-}
-
-/*fix this later text animation didnt work */
-input:focus ~ label,
-input:valid ~ label{
-top: -5px;
 }
 
 /*user input for username*/
@@ -101,23 +95,90 @@ top: -5px;
     top: 20px;
 }
 
-/*login button*/
+/*login button and hover element*/
 button{
     width: 100%;
     height: 40px;
     border-radius: 40px;
-    background: white;
+    background: rgb(177, 176, 176);
     border: none;
-    outline: none;
+    outline: white;
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
+    transition: color 0.4s linear;
+    text-transform: uppercase;
+}
+
+button:hover{
+    color: white;
+}
+
+/*animation for website title starts here*/
+.container {
+    text-align: center;
+    position: absolute;
+    top:18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%
+}
+
+.container pre{
+    color: white;
+    text-transform: uppercase;
+    display:block;
+}
+
+.text1{
+    font-size:40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    background: none;
+    position: relative;
+    animation: text 3s 1;
+    margin-bottom: 1px;
+}
+
+.bottom{
+    font-size: 30px;
+    font-weight:600px;
+    letter-spacing: 4px;
+    padding: var(--padding-v) var(--padding-h) 0;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(-100%);
+    animation: 1700ms 1200ms ease-out bottom forwards;
+}
+
+/*animation for website title ends here*/
+
+@keyframes text{
+    0%{
+        color: #be576a;
+        margin-bottom: -12px;
+    }
+
+    30%{
+        letter-spacing: 23px;
+        margin-bottom: -12px;
+    }
+
+    85%{
+        letter-spacing: 6px;
+        margin-bottom: -12px;
+    }
+}
+@keyframes bottom{
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
+    }
 }
 
 /*for animated shooting stars*/
-span{
+.shootingStars span{
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     width: 4px;
     height: 4px;
@@ -127,7 +188,7 @@ span{
     0 0 0 4px rgba(255, 255, 255, 0.1), 
     0 0 0 6px rgba(255, 255, 255, 0.1),
     0 0 20px rgba(255,255,255,1);
-    animation: animate 3s linear infinite;
+    animation: animate 2s linear infinite;
 
 }
 
@@ -159,21 +220,13 @@ span::before{
 }
 
 /* each individual shooting stars w different positions */
-span:nth-child(1){
-    top: 0px;
-    right:0px;
-    animation-delay: 0;
-    animation-duration: 1s;
-
-}
-
 
 span:nth-child(2){
     top: 0px;
     right:180px;
     left:initial;
     animation-delay: -0.2s;
-    animation-duration: 3s;
+    animation-duration: 1s;
 
 }
 
@@ -186,29 +239,57 @@ span:nth-child(3){
 
 }
 
-span:nth-child(4){
-    top: 0px;
-    right:400px;
-    left: initial;
-    animation-delay: 1.2s;
-    animation-duration: 2.5s;
-
-}
 
 span:nth-child(5){
     top: 0px;
-    right:1200px;
+    right:1400px;
     left: initial;
-    animation-delay: 1.2s;
-    animation-duration: 1.5s;
+    animation-delay: 0.2s;
+    animation-duration: 2s;
 
 }
 
 span:nth-child(6){
     top: 0px;
-    right:1400px;
+    right:1700px;
     left: initial;
     animation-delay: 0.2s;
-    animation-duration: 3s;
+    animation-duration: 1.6s;
+
+}
+
+span:nth-child(7){
+    top: 500px;
+    right:100px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 2s;
+
+}
+
+span:nth-child(8){
+    top: 0px;
+    right:100px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 4s;
+
+}
+
+span:nth-child(9){
+    top: 0px;
+    right:1500px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 4s;
+
+}
+
+span:nth-child(9){
+    top: 0px;
+    right:1200px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 1.2s;
 
 }
