@@ -133,7 +133,7 @@ function addContact()
     // let lastname = document.getElementById("contactTextLast").value;
     let phone = document.getElementById("contactTextNumber").value;
     let email = document.getElementById("contactTextEmail").value;
-    userId = localStorage.getItem("userId");
+    //userId = localStorage.getItem("userId");
 
 
     if (!validAddContact(name, phone, email)) {
