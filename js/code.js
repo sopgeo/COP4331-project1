@@ -1,16 +1,17 @@
 const urlBase = 'http://cop4331-manager.xyz/LAMPAPI';
 const extension = 'php';
 
-let userId = 0;
-let fullName = "";
+
+let userId = localStorage.getItem("userId"); //retrieves local storage variable
+let firstName = "";
 const ids = [];
-// let lastName = "";
+let lastName = "";
 
 function doLogin()
 {
 	userId = 0;
-	fullName = "";
-	// lastName = "";
+	firstName = "";
+	lastName = "";
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
@@ -33,27 +34,28 @@ function doLogin()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
+
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.ID;
-		
+				localStorage.setItem("userId", jsonObject.id); //create local storage variable to travel between pages
+                userId = localStorage.getItem("userId"); //set user id to the local storage var
+
+
 				if( userId < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
-				fullName = jsonObject.fullName;
-				// lastName = jsonObject.lastName;
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
 
 				saveCookie();
 	
-				//Redirects to the contacts.html
-				if( userId >= 1 )
-				{	
-					window.location.href = "contacts.html";
-				}
+				window.location.href = "contacts.html";
+                
 			}
 		};
+        
 		xhr.send(jsonPayload);
 	}
 	catch(err)
@@ -68,45 +70,45 @@ function saveCookie()
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "name=" + name + ",userId=" + userId + ";expires=" + date.toGMTString();
+	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
-function readCookie()
-{
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if( tokens[0] == "name" )
-		{
-			fullName = tokens[1];
-		}
-		// else if( tokens[0] == "lastName" )
-		// {
-		// 	lastName = tokens[1];
-		// }
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
-	}
-	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + name;
-	}
+function readCookie() {
+    userId = -1;
+    let data = document.cookie;
+    let splits = data.split(",");
+
+    for (var i = 0; i < splits.length; i++) {
+
+        let thisOne = splits[i].trim();
+        let tokens = thisOne.split("=");
+
+        if (tokens[0] == "firstName") {
+            firstName = tokens[1];
+        }
+
+        else if (tokens[0] == "lastName") {
+            lastName = tokens[1];
+        }
+
+        else if (tokens[0] == "userId") {
+            userId = parseInt(tokens[1].trim());
+        }
+    }
+
+    if (userId < 0) {
+        window.location.href = "index.html";
+    }
+
+    else {
+        document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
+    }
 }
 
 function doLogout()
 {
 	userId = 0;
+    localStorage.setItem("userId", 0);
 	fullName = "";
 	// lastName = "";
 	document.cookie = "fullName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -131,6 +133,8 @@ function addContact()
     // let lastname = document.getElementById("contactTextLast").value;
     let phone = document.getElementById("contactTextNumber").value;
     let email = document.getElementById("contactTextEmail").value;
+    userId = localStorage.getItem("userId");
+
 
     if (!validAddContact(name, phone, email)) {
         console.log("INVALID NAME, PHONE, OR EMAIL SUBMITTED");
