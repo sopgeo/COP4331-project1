@@ -48,7 +48,10 @@ function doLogin()
 				saveCookie();
 	
 				//Redirects to the contacts.html
-				window.location.href = "contacts.html";
+				if( userId >= 1 )
+				{	
+					window.location.href = "contacts.html";
+				}
 			}
 		};
 		xhr.send(jsonPayload);
