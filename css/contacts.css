@@ -10,7 +10,7 @@ section {
    width: 100%;
 
    /*provide png image for background*/
-   background: url('../images/son.png') no-repeat;
+   background: url('../images/sun.png') no-repeat;
    background-position-x: center;
    background-size: cover;
    /* animation: animateBg 5s linear infinite; */
@@ -35,7 +35,7 @@ section {
     border-radius: 50%;
     padding: 15px;
     margin: 10px;
-    width: 50px;
+    width: 100px;
     height: 50px;
     font-size: 18px;
     display: flex;
@@ -60,6 +60,34 @@ section {
    display: flex;
 /*   justify-content: center;*/
    align-items: left;
+}
+
+#contacts td input {
+   border-radius: 17px;
+   font-family: 'Montserrat';
+   outline: 0;
+   background: #fbde99;
+   width: 100%;
+   border: 0;
+   margin: 0 0 15px;
+   padding: 10px;
+   box-sizing: border-box;
+   font-size: 14px;
+}
+
+/* button formatting */
+.btn {
+   color: #007D2F;
+   font-family: 'Montserrat';
+   font-style: normal;
+   font-weight: bolder;
+   font-size: 2.3vw;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 0.3em 1.2em;
+   margin: 0.6em 0.3em 0.3em 0;
+   float: right;
 }
 
 .addContacts{
@@ -103,7 +131,6 @@ section {
       vertical-align: top;
 }
 
-/* does work but is very annoying to experience */
 /*.search-container:hover>.search-input {
    width: 400px;
 }*/
@@ -152,6 +179,20 @@ section {
     float: right;
 }*/
 
+
+#addMe>input:valid {
+   border: 2px solid #009345;
+   ;
+}
+
+#addMe>input:invalid {
+   border: 2px solid red;
+}
+
+#addMe>input:invalid:required {
+   background-image: white;
+}
+
 /*"done" button to add contact*/
 #addMe button {
    font-family: "Montserrat";
@@ -177,3 +218,59 @@ section {
    font-size: 16px;
    transition: 0.8s;
 }
+
+
+/* table {
+   width:100%;
+   table-layout: fixed;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+}
+
+.tbl-content {
+   height: 300px;
+   overflow-x: auto;
+   margin-top: 0px;
+   border: 1px solid rgba(155, 188, 115, 0.9);
+}
+
+#contacts td,
+#contacts th {
+   border: 1px solid rgba(155, 188, 115, 0.9);
+}
+
+#contacts tr:hover {
+   background-color: #478fbb;
+}
+
+#contacts th {
+   padding: 20px 15px;
+   text-align: left;
+   font-family: 'Montserrat';
+   font-weight: 500;
+   font-size: 16px;
+   font-weight: bold;
+   color: #007D2F;
+   background-color: rgba(155, 188, 115, 0.9);
+   text-transform: uppercase;
+}
+
+#contacts td {
+   padding: 15px;
+   text-align: left;
+   font-family: 'Montserrat';
+   vertical-align: middle;
+   font-weight: 300;
+   font-size: 15px;
+   font-weight: bold;
+   color: #66471b;
+   background-color: antiquewhite;
+}
+#contacts td span {
+   display: block;
+   white-space: nowrap;
+   overflow: hidden;
+   font-size: 100%;
+   color: #66471b;
+} */

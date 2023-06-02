@@ -17,7 +17,7 @@ section{
     min-height: 100vh;
     width: 100%;
 
-    /*provide png image for bacfkground*/
+    /*provide png image for background*/
     background: url('../images/sun.png')no-repeat;
     background-position-x: center;
     background-size: cover;
