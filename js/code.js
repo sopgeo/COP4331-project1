@@ -240,7 +240,7 @@ function edit_row(id) {
 }
 
 function save_row(no) {
-    var name = document.getElementById("name_text" + no).value;
+    var name_val = document.getElementById("name_text" + no).value;
     // var namel_val = document.getElementById("namel_text" + no).value;
     var email_val = document.getElementById("email_text" + no).value;
     var phone_val = document.getElementById("phone_text" + no).value;
