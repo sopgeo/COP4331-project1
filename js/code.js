@@ -65,6 +65,12 @@ function doLogin()
 
 }
 
+// Testing this function below.
+function goToRegister()
+{
+	window.location.href = "register.html";
+}
+
 function saveCookie()
 {
 	let minutes = 20;
