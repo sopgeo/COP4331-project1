@@ -555,3 +555,52 @@ function validAddContact(name, phone, email) {
     return true;
 
 }
+
+// Testing code below
+function doRegister()
+{
+    let login = document.getElementById("loginName").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let password = document.getElementById("loginPassword").value;
+
+    document.getElementById("registerResult").innerHTML = "";
+
+    let tmp = {login:login,firstName:firstName,lastName:lastName,password:password};
+    let jsonPayload = JSON.stringify( tmp );
+
+    let url = urlBase + '/Register.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try
+    {
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4) 
+			{
+				return;
+			}
+
+			if (this.readyState == 200)
+			{
+				let jsonObject = JSON.parse(xhr.responseText);
+               			userId = jsonObject.id;
+                		document.getElementById("registerResult").innerHTML = "User added";
+                		firstName = jsonObject.firstName;
+                		lastName = jsonObject.lastName;
+                		saveCookie();
+
+				window.location.href = "index.html";
+			}
+		};
+        
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+
+}
