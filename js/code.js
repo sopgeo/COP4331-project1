@@ -198,10 +198,10 @@ function loadContacts() {
                 for (let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].ID
                     text += "<tr id='row" + i + "'>"
-                    text += "<td id='name" + i + "'><span>" + jsonObject.results[i].name + "</span></td>";
+                    text += "<td id='name" + i + "'><span>" + jsonObject.results[i].Name + "</span></td>";
                     // text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
-                    text += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
-                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
+                    text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
+                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
                     text += "<td>" +
                         "<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
                         "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
@@ -284,8 +284,15 @@ function save_row(no) {
 
 function delete_row(no) {
     var name_val = document.getElementById("name" + no).innerText;
+    var email_val = document.getElementById("email" + no).innerText;
+    var phone_val = document.getElementById("phone" + no).innerText;
     // var namel_val = document.getElementById("last_Name" + no).innerText;
     nameOne = name_val.substring(0, name_val.length);
+    phoneOne = phone_val.substring(0, phone_val.length);
+    emailOne = email_val.substring(0, email_val.length);
+    console.log(nameOne);
+    console.log(phoneOne);
+    console.log(emailOne);
     // nameTwo = namel_val.substring(0, namel_val.length);
     let check = confirm('Confirm deletion of contact: ' + nameOne);
 
@@ -293,13 +300,14 @@ function delete_row(no) {
         document.getElementById("row" + no + "").outerHTML = "";
         let tmp = {
             name: nameOne,
-            // lastName: nameTwo,
+            email: emailOne,
+            phone: phoneOne,
             userId: userId
         };
 
         let jsonPayload = JSON.stringify(tmp);
 
-        let url = urlBase + '/DeleteContacts.' + extension;
+        let url = urlBase + '/DeleteContact.' + extension;
 
         let xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
