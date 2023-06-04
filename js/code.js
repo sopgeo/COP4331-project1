@@ -266,16 +266,16 @@ function save_row(no) {
     document.getElementById("save_button" + no).style.display = "none";
 
     let tmp = {
-        phoneNumber: phone_val,
-        emailAddress: email_val,
-        newName: name_val,
+        phone: phone_val,
+        email: email_val,
+        name: name_val,
         // newLastName: namel_val,
         id: id_val
     };
 
     let jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/UpdateContacts.' + extension;
+    let url = urlBase + '/UpdateContact.' + extension;
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -583,12 +583,7 @@ function doRegister()
     {
 		xhr.onreadystatechange = function() 
 		{
-			if (this.readyState == 4) 
-			{
-				return;
-			}
-
-			if (this.readyState == 200)
+			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse(xhr.responseText);
                			userId = jsonObject.id;
