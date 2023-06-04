@@ -166,10 +166,10 @@ function addContact()
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact added");
                 // Clear input fields in form 
-                // document.getElementById("addMe").reset();
+                document.getElementById("addMe").reset();
                 // reload contacts table and switch view to show
                 loadContacts();
-                showTable();
+                // showTable();
             }
         };
         xhr.send(jsonPayload);
@@ -207,11 +207,16 @@ function loadContacts() {
                     text += "<td id='name" + i + "'><span>" + jsonObject.results[i].Name + "</span></td>";
                     // text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
-                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
+                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>"; 
+
+                    // replaced <span class='glyphicon glyphicon-edit'></span> with EDIT
+                    // replaced <span class='glyphicon glyphicon-saved'></span> with SAVE
+                    // replaced <span class='glyphicon glyphicon-trash'></span> with DELETE
+
                     text += "<td>" +
-                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
-                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
-                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
+                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-rounder w3-transparent' onclick='edit_row(" + i + ")'>" + " EDIT " + "</button>" +
+                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-rounder w3-transparent' onclick='save_row(" + i + ")' style='display: none'>" + " SAVE " + "</button>" +
+                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-rounder w3-transparent'>" + " DELETE " + "</button>" + "</td>";
                     text += "<tr/>"
                 }
                 text += "</table>"

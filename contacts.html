@@ -7,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel = "stylesheet" type = "text/css" href = "css/contacts.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>                 
       <script type="text/javascript" src="js/code.js"></script>
       <script type="text/javascript" src="js/md5.js"></script>
    </head>
@@ -42,7 +43,11 @@
                         <input onkeyup=searchContacts() type="text" name="search" id="searchText" placeholder="Search..." class="search-input">
                         <a href="#" class="search-btn" type="button" id="searchContactButton" class="buttons font"
                            onclick="searchContacts();"><i class="fas fa-search"></i></a>
-                        <button type="button" onclick=loadContacts()><i class="fa fa-refresh" aria-hidden="true" style="font-size: 48px; color: black"> </i></button>
+
+                        <a href="#" class="refresh-btn" type="button" id="loadContactButton" class="buttons font"
+                           onclick="loadContacts();"><i class="fa fa-refresh"></i></a>
+
+                        <!-- <button type="button" onclick=loadContacts()><i class="fa fa-refresh"  style="font-size: 48px; color: black"> </i></button> -->
                      </div>
                      <!-- aria-hidden="true"> -->
                </div>
@@ -53,7 +58,7 @@
                <div class="tables">
                   <div class="tbl-content" id="contactsTable">
 
-                     <table class="contact-table" id="contacts" cellpadding="5" cellspacing="5" border="5">
+                     <table class="contact-table" id="contacts" cellpadding="5" cellspacing="5" border="0">
                         <thread>
                            <tr>
                               <th>Name</th>
@@ -61,10 +66,30 @@
                               <th>Phone</th>
                               <th></th>
                            </tr>
+                           <tr>
+                              <td> here is text </td>
+                              <td></td>
+                              <td></td>
+                              <td><button type="button" id="edit_button" class="w3-button w3-circle w3-lime" onclick="edit_row()" style="display: none;"></button>
+                                 <button></button></td>
+                           </tr>
+                           <tr>
+                              <td> here is text </td>
+                              <td></td>
+                              <td></td>
+                              <td><button type="button" id="edit_button" class="w3-button w3-circle w3-lime" onclick="edit_row()" style="display: none;"></button>
+                                 <button></button></td>
+                           </tr>
                         </thread>
                         <tbody id="tbody"></tbody>
-                     </table>
 
+<!--                         
+
+                        <button type="button" id="save_button" value="Save" class="w3-button w3-circle w3-lime" onclick="save_row()" style="display: inline-block;"><span class="glyphicon glyphicon-saved"></span></button>
+
+                        <button type="button" onclick="delete_row()" class="w3-button w3-circle w3-amber"><span class="glyphicon glyphicon-trash"></span> </button> -->
+
+                     </table>
                   </div>
                </div>
 
