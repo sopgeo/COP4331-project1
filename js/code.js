@@ -166,7 +166,7 @@ function addContact()
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact added");
                 // Clear input fields in form 
-                document.getElementById("addMe").reset();
+                // document.getElementById("addMe").reset();
                 // reload contacts table and switch view to show
                 loadContacts();
                 showTable();
