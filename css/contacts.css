@@ -23,47 +23,128 @@ section {
     text-align: center;
 }
 
-.column {
-    display: inline-block;
-    padding: 10px 10px;
-    vertical-align: middle;
-}
-
-.column button {
-    position: relative;
-    background: #ffffff;
-    border-radius: 50%;
-    padding: 15px;
-    margin: 10px;
-    width: 100px;
-    height: 50px;
-    font-size: 18px;
-    display: flex;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-/*    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);*/
-}
-
-.contacts-list{
-   position: absolute;
+/* add contact */
+.add-contact-panel{
+   margin: 20px;
+/*   position: relative;*/
    left: 50px;
-   width: 400px;
+   width: fit-content;
    height: 745px;
    background: transparent;
-   border: 2px solid rgba(255,255,255,0.5);
+   border: 2.25px solid rgba(255,255,255,0.6);
    border-radius: 20px;
-   backdrop-filter: blur(15px);
-   display: flex;
-/*   justify-content: center;*/
-   align-items: left;
+   backdrop-filter: blur(60px);
+}
+
+/* "add contact" header */
+.add-contact-panel h1 {
+   margin: 50px;
+   font-size: 40px;
+   color: #FFFFFF;
+   text-align: center;
+}
+
+/* input boxes and submit button*/
+#addMe {
+   width: fit-content;
+   margin-top: 20px;
+   text-align: center;
+}
+
+/* input boxes for contact */
+#addMe input {
+   margin: 0px 10px 10px 10px;
+   background: transparent;
+   padding: 8px;
+   font-size: 20px;
+   color: white;
+   background: rgba(255, 255, 255, 0.1);
+   border: 3px solid #FFFFFF;
+   border-radius: 7px;
+}
+
+/* headers for input boxes */
+#addMe h3{
+   font-size: 15px;
+   margin-left: 15px;
+   margin-top: 20px;
+   text-align: left;
+   color: white;
+}
+
+/*#addMe>input:valid {
+   border: 2px solid #009345;
+   ;
+}
+
+#addMe>input:invalid {
+   border: 2px solid red;
+}
+
+#addMe>input:invalid:required {
+   background-image: white;
+}*/
+
+/* submit button*/
+#addMe button {
+   font-size: 30px;
+   margin: 10px;
+   width: 80%;
+   height: 59px;
+   background: #FFFFFF;
+   border-radius: 5px;
+   border: 1px;
+}
+
+.right-panel-content {
+   overflow: hidden;
+   margin-left: 20px;
+   width: 40%;
+   height: 745px;
+   background: transparent;
+   border: 2.25px solid rgba(255,255,255,0.6);
+   border-radius: 20px;
+   backdrop-filter: blur(60px);
+/*   display: flex;
+   justify-content: center;
+   align-items: left;*/
+}
+
+.navigation-bar {
+   margin: 20px;
+}
+
+/*search bar*/
+.search-row input[type=text]{
+   width: 60%;
+   height: 18px;
+   margin: 12px 12px;
+   background: rgba(217, 217, 217, 0.3);
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 20px;
+   border: ;
+   font-size: 18px;
+   color: #FFFFFF;
+   padding: 6px 20px;
+   align-items: center;
+   cursor: pointer;
+}
+
+.search-row button {
+   margin: 10px;
+   width: 50px;
+   font-size: 30px;
+   color: black;
+}
+
+.search-row .search-btn .fas {
+   margin: 10px;
+   color: black;
+   font-size: 17px;
 }
 
 #contacts td input {
-   border-radius: 17px;
+   border-radius: 10px;
    font-family: 'Montserrat';
    outline: 0;
    background: #fbde99;
@@ -76,7 +157,7 @@ section {
 }
 
 /* button formatting */
-.btn {
+/*.btn {
    color: #007D2F;
    font-family: 'Montserrat';
    font-style: normal;
@@ -88,139 +169,9 @@ section {
    padding: 0.3em 1.2em;
    margin: 0.6em 0.3em 0.3em 0;
    float: right;
-}
-
-.addContacts{
-   line-height: 48px;
-   position: absolute;
-   left: 475px;
-   width: 910px;
-   height: 745px;
-   background: transparent;
-   border: 2px solid rgba(255,255,255,0.5);
-   border-radius: 20px;
-   backdrop-filter: blur(15px);
-   display: flex;
-   justify-content: center;
-   align-items: left;
-}
-
-/*search bar*/
-.search-container input[type=text]{
-   position: absolute;
-   width: 180px;
-   height: 18px;
-   margin: 12px 12px;
-   background: rgba(217, 217, 217, 0.3);
-   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-   border-radius: 20px;
-   font-size: 15px;
-   color: #FFFFFF;
-   font-family: 'Poppins';
-   padding: 6px 20px;
-   display: flex;
-   align-items: center;
-   cursor: pointer;
-
-
-}
-
-.search-container .search-btn .fas {
-   position: absolute;
-   color: rgba(217, 217, 217, 0.3);
-      vertical-align: top;
-}
-
-/*.search-container:hover>.search-input {
-   width: 400px;
 }*/
 
-.addContacts {
-    align-self: center;
-}
-
-/*applies to all of addMe*/
-#addMe {
-   color: white;
-   margin: auto;
-   top: 80px;
-   align-self: center;
-   font-family: 'Poppins';
-   border-radius: 20px;
-   position: absolute;
-   max-width: 350px;
-/*   margin: 0 auto 50px;*/
-   text-align: center;
-}
-
-/*input boxes for contact*/
-#addMe input {
-   border: 2px solid rgba(255,255,255,0.5);
-   border-radius: 12px;
-   background: transparent;
-   width: 100px;
-   padding: 5px;
-   font-size: 14px;
-   color: white;
-}
-
-/* button formatting */
-/*.btn {
-    color: #007D2F;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: bolder;
-    font-size: 2.3vw;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.3em 1.2em;
-    margin: 0.6em 0.3em 0.3em 0;
-    float: right;
-}*/
-
-
-#addMe>input:valid {
-   border: 2px solid #009345;
-   ;
-}
-
-#addMe>input:invalid {
-   border: 2px solid red;
-}
-
-#addMe>input:invalid:required {
-   background-image: white;
-}
-
-/*"done" button to add contact*/
-#addMe button {
-   font-family: "Montserrat";
-   position: absolute;
-   width: 100px;
-   height: 44px;
-
-   background: transparent;
-   color: white;
-   font-size: 18px;
-   border-radius: 5px;
-   top: 429px;
-   right: -250px;
-}
-
-.search-container .search-input {
-   background: transparent;
-   border: none;
-   outline: none;
-   width: 0px;
-   font-family: 'Montserrat';
-   font-weight: 500;
-   font-size: 16px;
-   transition: 0.8s;
-}
-
-
-/* table {
+ table {
    width:100%;
    table-layout: fixed;
    -moz-border-radius: 5px;
@@ -228,11 +179,18 @@ section {
    border-radius: 5px;
 }
 
+.contact-table {
+   border-collapse: collapse;
+   margin: 25px 0;
+   font-size: 0.9em;
+   min-width: 400px;
+}
+
 .tbl-content {
    height: 300px;
    overflow-x: auto;
    margin-top: 0px;
-   border: 1px solid rgba(155, 188, 115, 0.9);
+/*   border: 1px solid rgba(155, 188, 115, 0.9);*/
 }
 
 #contacts td,
@@ -273,4 +231,4 @@ section {
    overflow: hidden;
    font-size: 100%;
    color: #66471b;
-} */
+} 
