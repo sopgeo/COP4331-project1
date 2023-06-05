@@ -19,15 +19,15 @@
                <form id="addMe" method="post" style="display: block;">
                   <h1>Add Contact</h1>
 
-                  <h3>Name</h3>
-                  <input type="text" id="contactTextName" placeholder=" " required>
+                  <h3>Full name</h3>
+                  <input type="text" id="contactTextName" placeholder="First and last name " required>
                   <br>
                   <h3>Phone</h3>
-                  <input type="text" id="contactTextNumber" placeholder=" " required
+                  <input type="text" id="contactTextNumber" placeholder="Number" required
                      pattern="^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$">
                   <br>
                   <h3>Email</h3>
-                  <input type="text" id="contactTextEmail" placeholder=" "
+                  <input type="text" id="contactTextEmail" placeholder=" user@email.com "
                      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
                   <br>
                   <button type="button" id="addContactButton" class="buttons font" onclick="addContact();"> Submit
@@ -58,7 +58,7 @@
                <div class="tables">
                   <div class="tbl-content" id="contactsTable">
 
-                     <table class="contact-table" id="contacts" cellpadding="5" cellspacing="5" border="0">
+                     <table id="contacts" cellpadding="5" cellspacing="5" border="0">
                         <thread>
                            <tr>
                               <th>Name</th>
@@ -67,6 +67,12 @@
                               <th></th>
                            </tr>
                            <tr>
+                              <td>text</td>
+                              <td>text</td>
+                              <td>text</td>
+                              <td>text</td>
+                           </tr>
+
                         </thread>
                         <tbody id="tbody"></tbody>
                      </table>
