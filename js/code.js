@@ -205,9 +205,10 @@ function loadContacts() {
                     ids[i] = jsonObject.results[i].ID
                     text += "<tr id='row" + i + "'>"
                     text += "<td id='name" + i + "'><span>" + jsonObject.results[i].Name + "</span></td>";
-                    // text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
                     text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>"; 
+
+
 
                     // replaced <span class='glyphicon glyphicon-edit'></span> with EDIT
                     // replaced <span class='glyphicon glyphicon-saved'></span> with SAVE
@@ -219,6 +220,7 @@ function loadContacts() {
                         "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-rounder w3-transparent'>" + " DELETE " + "</button>" + "</td>";
                     text += "<tr/>"
                 }
+
                 text += "</table>"
                 document.getElementById("tbody").innerHTML = text;
             }
@@ -343,7 +345,7 @@ function delete_row(no) {
 function searchContacts() {
     const content = document.getElementById("searchText");
     const selections = content.value.toUpperCase().split(' ');
-    const table = document.getElementById("contactsTable");
+    const table = document.getElementById("contacts");
     const tr = table.getElementsByTagName("tr"); // Table Row
 
     for (let i = 0; i < tr.length; i++) {

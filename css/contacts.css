@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+}
+
 body {
    margin: 0;
 }
@@ -38,7 +45,7 @@ section {
 
 /* "add contact" header */
 .add-contact-panel h1 {
-   margin: 50px;
+   margin: 50px 50px 20px;
    font-size: 40px;
    color: #FFFFFF;
    text-align: center;
@@ -55,21 +62,31 @@ section {
 #addMe input {
    margin: 0px 10px 10px 10px;
    background: transparent;
-   padding: 8px;
-   font-size: 20px;
+   width: 90%;
+   padding: 7px;
+   font-size: 15px;
    color: white;
-   background: rgba(255, 255, 255, 0.1);
-   border: 3px solid #FFFFFF;
-   border-radius: 7px;
+   background: rgba(255, 255, 255, 0.12);
+   border: 1px solid #FFFFFF;
+   border-radius: 10px;
 }
+
 
 /* headers for input boxes */
 #addMe h3{
-   font-size: 15px;
+   color: rgba(86, 32, 112, 1);
+   font-family: 'Poppins';
+   font-style: normal;
+    font-weight: 500; 
+   font-size: 17px;
+
+    line-height: 20px; 
+
    margin-left: 15px;
+   margin-bottom: 5px;
    margin-top: 20px;
    text-align: left;
-   color: white;
+/*   color: white;*/
 }
 
 /*#addMe>input:valid {
@@ -87,12 +104,12 @@ section {
 
 /* submit button*/
 #addMe button {
-   font-size: 30px;
+   font-size: 27px;
    margin: 10px;
    width: 80%;
    height: 59px;
    background: #FFFFFF;
-   border-radius: 5px;
+   border-radius: 40px;
    border: 1px;
 }
 
@@ -129,14 +146,6 @@ section {
    cursor: pointer;
 }
 
-/* refresh button */
-/*.search-row button {
-   margin: 10px;
-   width: 50px;
-   font-size: 30px;
-   color: black;
-}*/
-
 /* search icon */
 .search-row .search-btn .fas {
    margin: 10px;
@@ -144,6 +153,7 @@ section {
    font-size: 17px;
 }
 
+/* refresh icon */
 .search-row .refresh-btn .fa {
    margin: 10px;
    color: black;
@@ -164,6 +174,7 @@ section {
    border: 2.5px solid rgba(255, 255, 255, 0.5);
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
    border-radius: 5px;
+   display: inline-block;
 }
 
 
@@ -182,38 +193,33 @@ section {
    float: right;
 }*/
 
-.button td {
-   width: 20px;
-   height: 50px;
-}
-
 /*span {
     color: rgb(164, 0, 0);
     font-family: 'Montserrat';
 }*/
 
- table {
-   margin: 20px;
+table {
+   margin: 0px 20px 20px;
    border-spacing: 0px 10px;
-/*   border: none;*/
-/*   width: %;*/
+   height: fit-content;
    table-layout: fixed;
    -moz-border-radius: 5px;
    -webkit-border-radius: 5px;
 }
 
-.contact-table {
-   border-collapse: separate;
-
-   font-size: 0.9em;
-   min-width: 400px;
+#contacts {
+   border: none;
 }
 
 /* border of entire table */
 .tbl-content {
-   height: 800px;
+   min-width: 400px;
    overflow-x: auto;
-   margin-top: 20px;
+   margin-top: 0px;
+   margin: 5px;
+   height: 545px;
+   border-collapse: separate;
+   font-size: 15px;
 }
 
 
@@ -226,18 +232,17 @@ section {
    border-top-style: hidden;
    border-left-style: hidden;
    border-right-style: hidden;
-
+   position: sticky;
 
    padding: 20px 15px;
    text-align: left;
 
 /*   font-family: 'Montserrat';*/
    font-weight: 500;
-   font-size: 16px;
+   font-size: 20px;
    font-weight: bold;
    color: black;
    background-color: transparent;
-/*   text-transform: uppercase;*/
 }
 
 /* table row */
@@ -252,10 +257,12 @@ section {
    border-style: solid none;
    padding: 15px;
    background: rgba(217, 217, 217, 0.3);
-   font-size: 15px;
+   font-size: 17px;
    color: black;
+   font-weight: semi-bold;
 }
 
+/* details for table formatting */
 #contacts td:first-child {
    border-left-style:solid;
    border-top-left-radius: 10px;
@@ -270,20 +277,19 @@ section {
 
 /* edit contact input boxes */
 #contacts td input {
-   color: white;
+   color: black;
    outline: 0;
-   width: 100%;
-   margin: 0 0 15px;
+   width: 70%;
+   /* margin: 0 0 15px; */
    padding: 10px;
    box-sizing: border-box;
-   font-size: 14px;
+   font-size: 15px;
+   font-weight: normal;
 
    background: rgba(217, 217, 217, 0.3);
-/*   border: 3px solid #FFFFFF;
+   border: 3px solid #FFFFFF;
    border-radius: 7px;
-   border-left: none;*/
 }
-
 
 /*#contacts td span {
    display: block;
