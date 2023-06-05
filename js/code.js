@@ -343,7 +343,7 @@ function delete_row(no) {
 function searchContacts() {
     const content = document.getElementById("searchText");
     const selections = content.value.toUpperCase().split(' ');
-    const table = document.getElementById("contacts");
+    const table = document.getElementById("contactsTable");
     const tr = table.getElementsByTagName("tr"); // Table Row
 
     for (let i = 0; i < tr.length; i++) {
