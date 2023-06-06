@@ -563,13 +563,46 @@ function validAddContact(name, phone, email) {
 
 }
 
-// Testing code below
 function doRegister()
 {
     let login = document.getElementById("loginName").value;
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let password = document.getElementById("loginPassword").value;
+
+    // if statement to check if the user input for register is valid.
+
+    var valid = true;
+
+    if (firstName == "")
+    {
+        console.log("Please enter First Name.");
+        valid = false;
+    }
+
+    if (lastName == "")
+    {
+        console.log("Please enter Last Name.");
+        valid = false;
+    }
+
+    if (password == "")
+    {
+        console.log("Please enter a password.");
+        valid = false;
+    }
+
+    if (login == "")
+    {
+        console.log("Please enter a Username.");
+        valid = false;
+    }
+
+    if (valid == false)
+    {
+        document.getElementById("registerResult").innerHTML = "Not valid registration";
+        return;
+    }
 
     document.getElementById("registerResult").innerHTML = "";
 
@@ -605,4 +638,9 @@ function doRegister()
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 
+}
+
+function returnToLogin()
+{
+    window.location.href = "index.html";
 }
