@@ -615,7 +615,7 @@ function doRegister()
                 		lastName = jsonObject.lastName;
                 		saveCookie();
 
-				window.location.href = "index.html";
+				//window.location.href = "index.html";
 			}
 		};
         
