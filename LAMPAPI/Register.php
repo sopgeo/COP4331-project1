@@ -15,12 +15,28 @@
 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES (?, ?, ?, ?)");
-		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
-		$stmt->execute();
-		$stmt->close();
-		$conn->close();
-		returnWithError("");
+
+		$sql1 = "SELECT * FROM Users WHERE Login=?";
+		$sql = $conn->prepare($sql1);
+		$sql->bind_param("s", $login);
+		$sql->execute();
+		$data = $sql->get_result();
+		$num_users = mysqli_num_rows($data);
+
+		if ($num_users == 0)
+		{
+			$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES (?, ?, ?, ?)");
+			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
+			$stmt->execute();
+			$stmt->close();
+			$conn->close();
+			returnWithError("");
+		}
+		else
+		{
+			http_response_code(409);
+			returnWithError("");
+		}
 	}
 
 	function getRequestInfo()
