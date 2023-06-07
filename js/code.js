@@ -438,68 +438,6 @@ function validLoginForm(logName, logPass) {
 
 }
 
-function validSignUpForm(name, user, pass) {
-
-    var nameErr = userErr = passErr = true;
-
-    if (name == "") {
-        console.log("NAME IS BLANK");
-    }
-    else {
-        console.log("name IS VALID");
-        nameErr = false;
-    }
-
-    // if (lName == "") {
-    //     console.log("LAST NAME IS BLANK");
-    // }
-    // else {
-    //     console.log("LAST name IS VALID");
-    //     lNameErr = false;
-    // }
-
-    if (user == "") {
-        console.log("USERNAME IS BLANK");
-    }
-    else {
-        var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
-
-        if (regex.test(user) == false) {
-            console.log("USERNAME IS NOT VALID");
-        }
-
-        else {
-
-            console.log("USERNAME IS VALID");
-            userErr = false;
-        }
-    }
-
-    if (pass == "") {
-        console.log("PASSWORD IS BLANK");
-    }
-    else {
-        var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
-
-        if (regex.test(pass) == false) {
-            console.log("PASSWORD IS NOT VALID");
-        }
-
-        else {
-
-            console.log("PASSWORD IS VALID");
-            passErr = false;
-        }
-    }
-
-    if ((nameErr || userErr || passErr) == true) {
-        return false;
-
-    }
-
-    return true;
-}
-
 function validAddContact(name, phone, email) {
 
     var nameErr = phoneErr = emailErr = true;
@@ -614,20 +552,36 @@ function doRegister()
 	{
 	    document.getElementById("userResult").innerHTML = "Please enter a username";
 	}
+	else
+	{
+	    document.getElementById("userResult").innerHTML = "";
+	}
 
 	if (!validFirstName)
 	{
 	    document.getElementById("firstNameResult").innerHTML = "Please enter first name";
+	}
+	else
+	{
+	    document.getElementById("firstNameResult").innerHTML = "";
 	}
 
 	if (!validLastName)
 	{
 	    document.getElementById("lastNameResult").innerHTML = "Please enter last name";
 	}
+	else
+	{
+	    document.getElementById("lastNameResult").innerHTML = "";
+	}
 
 	if (!validPassword)
 	{
 	    document.getElementById("passwordResult").innerHTML = "Please enter a password";
+	}
+	else
+	{
+	    document.getElementById("passwordResult").innerHTML = "";
 	}
         return;
     }
@@ -646,6 +600,12 @@ function doRegister()
     {
 		xhr.onreadystatechange = function() 
 		{
+
+			if (this.status == 409) {
+                		document.getElementById("registerResult").innerHTML = "Username Taken";
+                		return;
+            		}
+
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse(xhr.responseText);
