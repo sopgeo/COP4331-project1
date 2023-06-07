@@ -573,34 +573,62 @@ function doRegister()
     // if statement to check if the user input for register is valid.
 
     var valid = true;
+    var validLogin = true;
+    var validFirstName = true;
+    var validLastName = true;
+    var validPassword = true;
 
     if (firstName == "")
     {
         console.log("Please enter First Name.");
         valid = false;
+	validFirstName = false;
     }
 
     if (lastName == "")
     {
         console.log("Please enter Last Name.");
         valid = false;
+	validLastName = false;
     }
 
     if (password == "")
     {
         console.log("Please enter a password.");
         valid = false;
+ 	validPassword = false;
     }
 
     if (login == "")
     {
         console.log("Please enter a Username.");
         valid = false;
+	validLogin = false;
     }
 
-    if (valid == false)
+    if (!valid)
     {
         document.getElementById("registerResult").innerHTML = "Not valid registration";
+
+	if (!validLogin)
+	{
+	    document.getElementById("userResult").innerHTML = "Please enter a username";
+	}
+
+	if (!validFirstName)
+	{
+	    document.getElementById("firstNameResult").innerHTML = "Please enter first name";
+	}
+
+	if (!validLastName)
+	{
+	    document.getElementById("lastNameResult").innerHTML = "Please enter last name";
+	}
+
+	if (!validPassword)
+	{
+	    document.getElementById("passwordResult").innerHTML = "Please enter a password";
+	}
         return;
     }
 
