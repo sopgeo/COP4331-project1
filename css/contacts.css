@@ -60,7 +60,7 @@ section {
 
 /* input boxes for contact */
 #addMe input {
-   margin: 0px 10px 10px 10px;
+   margin: 0px 10px 10px 8px;
    background: transparent;
    width: 90%;
    padding: 7px;
@@ -80,18 +80,17 @@ section {
     font-weight: 500; 
    font-size: 17px;
 
-    line-height: 20px; 
+    line-height: 25px; 
 
    margin-left: 15px;
-   margin-bottom: 5px;
+   margin-bottom: 6px;
    margin-top: 20px;
    text-align: left;
 /*   color: white;*/
 }
 
-/*#addMe>input:valid {
+#addMe>input:valid {
    border: 2px solid #009345;
-   ;
 }
 
 #addMe>input:invalid {
@@ -100,7 +99,7 @@ section {
 
 #addMe>input:invalid:required {
    background-image: white;
-}*/
+}
 
 /* submit button*/
 #addMe button {
@@ -111,6 +110,13 @@ section {
    background: #FFFFFF;
    border-radius: 40px;
    border: 1px;
+   transition: all 0.4s;
+}
+
+#addMe button:hover {
+   transform: scale(1.07);
+   /* background: transparent; */
+   /* background-color: #478fbb; */
 }
 
 .right-panel-content {
@@ -134,7 +140,7 @@ section {
 /*search bar*/
 .search-row input[type=text]{
    width: 60%;
-   height: 18px;
+   height: 30px;
    margin: 12px 12px;
    color: #FFFFFF;
    padding: 6px 20px;
@@ -254,6 +260,7 @@ table {
 /* table data */
 #contacts td {
    border: 3px solid #FFFFFF;
+   height: 60px;
    border-style: solid none;
    padding: 15px;
    background: rgba(217, 217, 217, 0.3);

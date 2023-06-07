@@ -169,7 +169,7 @@ function addContact()
                 document.getElementById("addMe").reset();
                 // reload contacts table and switch view to show
                 loadContacts();
-                // showTable();
+                //showTable();
             }
         };
         xhr.send(jsonPayload);
@@ -205,19 +205,14 @@ function loadContacts() {
                     ids[i] = jsonObject.results[i].ID
                     text += "<tr id='row" + i + "'>"
                     text += "<td id='name" + i + "'><span>" + jsonObject.results[i].Name + "</span></td>";
+                    // text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
-                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>"; 
-
-
-
-                    // replaced <span class='glyphicon glyphicon-edit'></span> with EDIT
-                    // replaced <span class='glyphicon glyphicon-saved'></span> with SAVE
-                    // replaced <span class='glyphicon glyphicon-trash'></span> with DELETE
+                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
 
                     text += "<td>" +
-                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-rounder w3-transparent' onclick='edit_row(" + i + ")'>" + " EDIT " + "</button>" +
-                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-rounder w3-transparent' onclick='save_row(" + i + ")' style='display: none'>" + " SAVE " + "</button>" +
-                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-rounder w3-transparent'>" + " DELETE " + "</button>" + "</td>";
+                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' onclick='edit_row(" + i + ")' >" + " EDIT " + "</button>" +
+                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-round-large w3-border w3-border-black w3-padding-small w3-bar' onclick='save_row(" + i + ")' style='display: none; background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' >" + " SAVE " + "</button>" +
+                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-show-inline-block w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; font-weight: 500; data-inline: true' <b></b>" + " DELETE " + " </button>" + "</td>";
                     text += "<tr/>"
                 }
 
