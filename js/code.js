@@ -205,7 +205,6 @@ function loadContacts() {
                     ids[i] = jsonObject.results[i].ID
                     text += "<tr id='row" + i + "'>"
                     text += "<td id='name" + i + "'><span>" + jsonObject.results[i].Name + "</span></td>";
-                    // text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
                     text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
 
@@ -231,31 +230,26 @@ function edit_row(id) {
     document.getElementById("edit_button" + id).style.display = "none";
     document.getElementById("save_button" + id).style.display = "inline-block";
 
-    // var firstNameI = document.getElementById("first_Name" + id);
     var name = document.getElementById("name" + id);
     var email = document.getElementById("email" + id);
     var phone = document.getElementById("phone" + id);
 
     var name_data = name.innerText;
-    // var namel_data = lastNameI.innerText;
     var email_data = email.innerText;
     var phone_data = phone.innerText;
 
     name.innerHTML = "<input type='text' id='name_text" + id + "' value='" + name_data + "'>";
-    // lastNameI.innerHTML = "<input type='text' id='namel_text" + id + "' value='" + namel_data + "'>";
     email.innerHTML = "<input type='text' id='email_text" + id + "' value='" + email_data + "'>";
     phone.innerHTML = "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>"
 }
 
 function save_row(no) {
     var name_val = document.getElementById("name_text" + no).value;
-    // var namel_val = document.getElementById("namel_text" + no).value;
     var email_val = document.getElementById("email_text" + no).value;
     var phone_val = document.getElementById("phone_text" + no).value;
     var id_val = ids[no]
 
     document.getElementById("name" + no).innerHTML = name_val;
-    // document.getElementById("last_Name" + no).innerHTML = namel_val;
     document.getElementById("email" + no).innerHTML = email_val;
     document.getElementById("phone" + no).innerHTML = phone_val;
 
@@ -266,7 +260,6 @@ function save_row(no) {
         phone: phone_val,
         email: email_val,
         name: name_val,
-        // newLastName: namel_val,
         id: id_val
     };
 
@@ -294,14 +287,14 @@ function delete_row(no) {
     var name_val = document.getElementById("name" + no).innerText;
     var email_val = document.getElementById("email" + no).innerText;
     var phone_val = document.getElementById("phone" + no).innerText;
-    // var namel_val = document.getElementById("last_Name" + no).innerText;
+
     nameOne = name_val.substring(0, name_val.length);
     phoneOne = phone_val.substring(0, phone_val.length);
     emailOne = email_val.substring(0, email_val.length);
     console.log(nameOne);
     console.log(phoneOne);
     console.log(emailOne);
-    // nameTwo = namel_val.substring(0, namel_val.length);
+
     let check = confirm('Confirm deletion of contact: ' + nameOne);
 
     if (check === true) {
@@ -345,20 +338,15 @@ function searchContacts() {
 
     for (let i = 0; i < tr.length; i++) {
         const td_n = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
-        // const td_ln = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
 
         if (td_n) {
             const txtValue_n = td_n.textContent || td_n.innerText;
-            // const txtValue_ln = td_ln.textContent || td_ln.innerText;
             tr[i].style.display = "none";
 
             for (selection of selections) {
                 if (txtValue_n.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                // if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
-                //     tr[i].style.display = "";
-                // }
             }
         }
     }
@@ -433,6 +421,60 @@ function validLoginForm(logName, logPass) {
 
 }
 
+function validSignUpForm(name, user, pass) {
+
+    var nameErr = userErr = passErr = true;
+
+    if (name == "") {
+        console.log("NAME IS BLANK");
+    }
+    else {
+        console.log("name IS VALID");
+        nameErr = false;
+    }
+
+    if (user == "") {
+        console.log("USERNAME IS BLANK");
+    }
+    else {
+        var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
+
+        if (regex.test(user) == false) {
+            console.log("USERNAME IS NOT VALID");
+        }
+
+        else {
+
+            console.log("USERNAME IS VALID");
+            userErr = false;
+        }
+    }
+
+    if (pass == "") {
+        console.log("PASSWORD IS BLANK");
+    }
+    else {
+        var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
+
+        if (regex.test(pass) == false) {
+            console.log("PASSWORD IS NOT VALID");
+        }
+
+        else {
+
+            console.log("PASSWORD IS VALID");
+            passErr = false;
+        }
+    }
+
+    if ((nameErr || userErr || passErr) == true) {
+        return false;
+
+    }
+
+    return true;
+}
+
 function validAddContact(name, phone, email) {
 
     var nameErr = phoneErr = emailErr = true;
@@ -444,14 +486,6 @@ function validAddContact(name, phone, email) {
         console.log("name IS VALID");
         nameErr = false;
     }
-
-    // if (lastName == "") {
-    //     console.log("LAST NAME IS BLANK");
-    // }
-    // else {
-    //     console.log("LAST name IS VALID");
-    //     lNameErr = false;
-    // }
 
     if (phone == "") {
         console.log("PHONE IS BLANK");
