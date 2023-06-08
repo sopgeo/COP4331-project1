@@ -1,7 +1,6 @@
 const urlBase = 'http://cop4331-manager.xyz/LAMPAPI';
 const extension = 'php';
 
-
 let userId = localStorage.getItem("userId"); //retrieves local storage variable
 let firstName = "";
 const ids = [];
@@ -15,12 +14,10 @@ function doLogin()
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -114,29 +111,15 @@ function readCookie() {
 function doLogout()
 {
 	userId = 0;
-    localStorage.setItem("userId", 0);
+    	localStorage.setItem("userId", 0);
 	fullName = "";
-	// lastName = "";
 	document.cookie = "fullName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
 
-function showTable() {
-    var x = document.getElementById("addMe");
-    var contacts = document.getElementById("contactsTable")
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        contacts.style.display = "none";
-    } else {
-        x.style.display = "none";
-        contacts.style.display = "block";
-    }
-}
-
 function addContact()
 {
-	let name = document.getElementById("contactTextName").value;
-    // let lastname = document.getElementById("contactTextLast").value;
+    let name = document.getElementById("contactTextName").value;
     let phone = document.getElementById("contactTextNumber").value;
     let email = document.getElementById("contactTextEmail").value;
     //userId = localStorage.getItem("userId");
@@ -165,11 +148,10 @@ function addContact()
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact added");
-                // Clear input fields in form 
+                // Clears input fields
                 document.getElementById("addMe").reset();
-                // reload contacts table and switch view to show
+                // Showing contacts
                 loadContacts();
-                //showTable();
             }
         };
         xhr.send(jsonPayload);
@@ -209,9 +191,9 @@ function loadContacts() {
                     text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
 
                     text += "<td>" +
-                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' onclick='edit_row(" + i + ")' >" + " EDIT " + "</button>" +
-                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-round-large w3-border w3-border-black w3-padding-small w3-bar' onclick='save_row(" + i + ")' style='display: none; background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' >" + " SAVE " + "</button>" +
-                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-show-inline-block w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; font-weight: 500; data-inline: true' <b></b>" + " DELETE " + " </button>" + "</td>";
+                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' onclick='editContact(" + i + ")' >" + " EDIT " + "</button>" +
+                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-round-large w3-border w3-border-black w3-padding-small w3-bar' onclick='saveContact(" + i + ")' style='display: none; background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; data-inline: true' >" + " SAVE " + "</button>" +
+                        "<button type='button' onclick='deleteContact(" + i + ")' class='w3-button w3-round-large w3-border w3-border-black w3-left w3-padding-small w3-show-inline-block w3-bar' style='background: rgba(141, 141, 141, 0.3); width: 100px; margin: 5px; font-weight: 500; data-inline: true' <b></b>" + " DELETE " + " </button>" + "</td>";
                     text += "<tr/>"
                 }
 
@@ -226,7 +208,7 @@ function loadContacts() {
 }
 
 
-function edit_row(id) {
+function editContact(id) {
     document.getElementById("edit_button" + id).style.display = "none";
     document.getElementById("save_button" + id).style.display = "inline-block";
 
@@ -243,18 +225,18 @@ function edit_row(id) {
     phone.innerHTML = "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>"
 }
 
-function save_row(no) {
-    var name_val = document.getElementById("name_text" + no).value;
-    var email_val = document.getElementById("email_text" + no).value;
-    var phone_val = document.getElementById("phone_text" + no).value;
-    var id_val = ids[no]
+function saveContact(num) {
+    var name_val = document.getElementById("name_text" + num).value;
+    var email_val = document.getElementById("email_text" + num).value;
+    var phone_val = document.getElementById("phone_text" + num).value;
+    var id_val = ids[num]
 
-    document.getElementById("name" + no).innerHTML = name_val;
-    document.getElementById("email" + no).innerHTML = email_val;
-    document.getElementById("phone" + no).innerHTML = phone_val;
+    document.getElementById("name" + num).innerHTML = name_val;
+    document.getElementById("email" + num).innerHTML = email_val;
+    document.getElementById("phone" + num).innerHTML = phone_val;
 
-    document.getElementById("edit_button" + no).style.display = "inline-block";
-    document.getElementById("save_button" + no).style.display = "none";
+    document.getElementById("edit_button" + num).style.display = "inline-block";
+    document.getElementById("save_button" + num).style.display = "none";
 
     let tmp = {
         phone: phone_val,
@@ -283,10 +265,10 @@ function save_row(no) {
     }
 }
 
-function delete_row(no) {
-    var name_val = document.getElementById("name" + no).innerText;
-    var email_val = document.getElementById("email" + no).innerText;
-    var phone_val = document.getElementById("phone" + no).innerText;
+function deleteContact(num) {
+    var name_val = document.getElementById("name" + num).innerText;
+    var email_val = document.getElementById("email" + num).innerText;
+    var phone_val = document.getElementById("phone" + num).innerText;
 
     nameOne = name_val.substring(0, name_val.length);
     phoneOne = phone_val.substring(0, phone_val.length);
@@ -298,7 +280,7 @@ function delete_row(no) {
     let check = confirm('Confirm deletion of contact: ' + nameOne);
 
     if (check === true) {
-        document.getElementById("row" + no + "").outerHTML = "";
+        document.getElementById("row" + num + "").outerHTML = "";
         let tmp = {
             name: nameOne,
             email: emailOne,
@@ -337,7 +319,7 @@ function searchContacts() {
     const tr = table.getElementsByTagName("tr"); // Table Row
 
     for (let i = 0; i < tr.length; i++) {
-        const td_n = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
+        const td_n = tr[i].getElementsByTagName("td")[0]; // Table Data: Name
 
         if (td_n) {
             const txtValue_n = td_n.textContent || td_n.innerText;
