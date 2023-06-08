@@ -108,6 +108,7 @@ button{
     font-weight: 600;
     transition: color 0.4s linear;
     text-transform: uppercase;
+    margin: 5px;
 }
 
 button:hover{
